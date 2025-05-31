@@ -33,7 +33,7 @@
                   <TableColumn fx:id="descP" prefWidth="116.66665649414062" text="Descripcion" />
                   <TableColumn fx:id="cantVendida" prefWidth="60.66664123535156" text="Cantidad" />
                   <TableColumn fx:id="precioUnitario" prefWidth="59.33331298828125" text="Precio" />
-                  <TableColumn fx:id="totalP" prefWidth="82.0" text="Total" />
+                  <TableColumn fx:id="totalPV" prefWidth="82.0" text="Total" />
               </columns>
             </TableView>
             <TextField fx:id="CantidadPVE" layoutX="76.0" layoutY="52.0" />
