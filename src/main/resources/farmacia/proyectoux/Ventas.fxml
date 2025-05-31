@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="390.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farmacia.proyectoux.Ventas">
+   <children>
+      <AnchorPane prefHeight="36.0" prefWidth="718.0" style="-fx-background-color: #138d75;">
+         <children>
+            <Label layoutX="338.0" layoutY="10.0" text="Ventas" textFill="#f9f9f9">
+               <font>
+                  <Font name="Georgia" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="36.0" prefHeight="355.0" prefWidth="718.0">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Producto: " />
+            <TextField fx:id="NomPVE" layoutX="76.0" layoutY="10.0" />
+            <Label layoutX="14.0" layoutY="56.0" text="Cantidad: " />
+            <Button fx:id="buscarProductoV" layoutX="16.0" layoutY="110.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Buscar producto" textFill="#f9f9f9" />
+            <TableView fx:id="tablaProductosVenta" layoutY="149.0" prefHeight="200.0" prefWidth="444.0">
+              <columns>
+                <TableColumn fx:id="idP" prefWidth="51.999998688697815" text="ID" />
+                <TableColumn fx:id="nomP" prefWidth="82.66665267944336" text="Nombre" />
+                  <TableColumn fx:id="descP" prefWidth="116.66665649414062" text="Descripcion" />
+                  <TableColumn fx:id="cantVendida" prefWidth="60.66664123535156" text="Cantidad" />
+                  <TableColumn fx:id="precioUnitario" prefWidth="59.33331298828125" text="Precio" />
+                  <TableColumn fx:id="totalP" prefWidth="82.0" text="Total" />
+              </columns>
+            </TableView>
+            <TextField fx:id="CantidadPVE" layoutX="76.0" layoutY="52.0" />
+            <Button fx:id="cancelarVenta" layoutX="452.0" layoutY="310.0" mnemonicParsing="false" style="-fx-background-color: fd786f;" text="Cancelar" />
+            <Button fx:id="guardarVenta" layoutX="603.0" layoutY="305.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="91.0" style="-fx-background-color: #138d75;" text="Efectuar" textFill="#f9f9f9">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="454.0" layoutY="276.0" text="Total:" />
+            <Label layoutX="454.0" layoutY="240.0" text="Cambio:" />
+            <Button fx:id="EliminarPV" layoutX="297.0" layoutY="110.0" mnemonicParsing="false" style="-fx-background-color: fd786f;" text="Eliminar producto" />
+            <Label layoutX="455.0" layoutY="206.0" text="Importe:" />
+            <TextField fx:id="ImporteCliente" layoutX="516.0" layoutY="202.0" />
+            <Label fx:id="cambioV" layoutX="516.0" layoutY="241.0" text="Label" />
+            <Label fx:id="totalP" layoutX="516.0" layoutY="275.0" text="Label">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="ImprimirTicket" layoutX="530.0" layoutY="310.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Imprimir" textFill="#f9f9f9" />
+            <Button layoutX="151.0" layoutY="110.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Agregar producto" textFill="#f9f9f9" />
+            <AnchorPane fx:id="busquedaPV" layoutX="217.0" layoutY="-10.0" prefHeight="240.0" prefWidth="454.0" style="-fx-background-color: #d5f9ee; -fx-border-color: #138d75; visibility: false;">
+               <children>
+                  <Button fx:id="cancelarBusqueda" layoutX="165.0" layoutY="205.0" mnemonicParsing="false" text="Cancelar" />
+                  <Button fx:id="agregarProducto" layoutX="264.0" layoutY="205.0" mnemonicParsing="false" text="Agregar" />
+                  <TableView fx:id="tablaBusqueda" layoutX="26.0" layoutY="66.0" prefHeight="131.0" prefWidth="402.0">
+                    <columns>
+                      <TableColumn fx:id="idBusqueda" prefWidth="59.33332824707031" text="ID" />
+                      <TableColumn fx:id="nomBusquedaVenta" prefWidth="91.3333740234375" text="Nombre" />
+                        <TableColumn fx:id="descBusquedaVenta" prefWidth="123.99996948242188" text="Descripcion" />
+                        <TableColumn fx:id="dispBusquedaVenta" prefWidth="67.33331298828125" text="Disponible" />
+                        <TableColumn fx:id="precioBPV" prefWidth="60.0" text="Precio" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="busquedaAgregarVenta" layoutX="115.0" layoutY="23.0" prefHeight="25.0" prefWidth="279.0" />
+                  <Label layoutX="64.0" layoutY="27.0" text="Buscar" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
