@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="390.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farmacia.proyectoux.CorteDeCaja">
+   <children>
+      <AnchorPane prefHeight="36.0" prefWidth="718.0" style="-fx-background-color: #138d75;">
+         <children>
+            <Label layoutX="316.0" layoutY="10.0" text="Corte De Caja" textFill="#f9f9f9">
+               <font>
+                  <Font name="Georgia" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="36.0" prefHeight="355.0" prefWidth="718.0">
+         <children>
+            <Button fx:id="cerrarCorte" layoutX="624.0" layoutY="315.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Cerrar corte" textFill="#f9f9f9" />
+            <Label layoutX="23.0" layoutY="14.0" text="Usario: " />
+            <Label layoutX="177.0" layoutY="14.0" text="Inicio turno:" />
+            <Label layoutX="375.0" layoutY="14.0" text="Fin turno:" />
+            <Label layoutX="552.0" layoutY="14.0" text="Fecha:" />
+            <Label layoutX="25.0" layoutY="81.0" text="Fondo de caja:" />
+            <Label layoutX="24.0" layoutY="117.0" text="Entradas (ventas):" />
+            <Label layoutX="18.0" layoutY="153.0" text="Salidas (devoluciones):" />
+            <Label layoutX="174.0" layoutY="319.0" text="Total en caja:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="usuarioCorte" layoutX="64.0" layoutY="14.0" text="Label" />
+            <Label fx:id="inicioCorte" layoutX="249.0" layoutY="14.0" text="Label" />
+            <Label fx:id="finCorte" layoutX="433.0" layoutY="14.0" text="Label" />
+            <Label fx:id="fechaCorte" layoutX="596.0" layoutY="14.0" text="Label" />
+            <Label layoutX="23.0" layoutY="194.0" text="Total esperado:" />
+            <TextField fx:id="totalCorte" layoutX="284.0" layoutY="315.0" />
+            <Label fx:id="fondoCaja" layoutX="163.0" layoutY="81.0" text="Label" />
+            <Label fx:id="entradasCorte" layoutX="163.0" layoutY="117.0" text="Label" />
+            <Label fx:id="salidasCorte" layoutX="163.0" layoutY="153.0" text="Label" />
+            <Label fx:id="totalEsperado" layoutX="163.0" layoutY="194.0" text="Label" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -14,10 +14,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="397.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farmacia.proyectoux.ABCProducto">
+<AnchorPane fx:id="ProductosAdmin" prefHeight="390.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farmacia.proyectoux.ABCProducto">
    <children>
-      <GridPane prefHeight="397.0" prefWidth="718.0">
+      <GridPane prefHeight="390.0" prefWidth="718.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -48,7 +47,7 @@
                   <Label layoutX="476.0" layoutY="66.0" text="Categoria" />
                   <Label layoutX="475.0" layoutY="105.0" text="Ubicación" />
                   <ComboBox layoutX="541.0" layoutY="62.0" prefWidth="150.0" />
-                  <TextField layoutX="76.0" layoutY="27.0" />
+                  <TextField fx:id="idProducto" layoutX="76.0" layoutY="27.0" />
                   <TextField layoutX="76.0" layoutY="62.0" />
                   <TextField layoutX="76.0" layoutY="101.0" />
                   <TextArea layoutX="313.0" layoutY="6.0" prefHeight="50.0" prefWidth="150.0" />

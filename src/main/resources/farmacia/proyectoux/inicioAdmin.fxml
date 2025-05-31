@@ -10,30 +10,46 @@
 
 <AnchorPane prefHeight="463.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farmacia.proyectoux.InicioAdmin">
    <children>
-      <AnchorPane layoutY="45.0" prefHeight="419.0" prefWidth="718.0" style="-fx-background-color: #138d75;">
+      <Pane prefHeight="41.0" prefWidth="718.0" style="-fx-background-color: #73c6b6;">
          <children>
-            <ImageView fitHeight="225.0" fitWidth="317.0" layoutX="256.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="finSesion" layoutX="605.0" layoutY="6.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="99.0" style="-fx-background-color: #138d75;" text="Cerrar Sesion" textFill="#f9f9f9" />
+            <Label layoutX="36.0" layoutY="12.0" text="Fecha" />
+            <Label fx:id="fecha" layoutX="80.0" layoutY="12.0" text="Label">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="428.0" layoutY="12.0" text="Usuario" />
+            <Label fx:id="usuario" layoutX="486.0" layoutY="12.0" text="Label">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <AnchorPane layoutY="89.0" prefHeight="390.0" prefWidth="718.0" style="-fx-background-color: #138d75;">
+         <children>
+            <ImageView fitHeight="225.0" fitWidth="317.0" layoutX="256.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../iconos/logoFarmacia.png" />
                </image>
             </ImageView>
-            <Label layoutX="197.0" layoutY="311.0" text="Bienvenido al mejor punto de ventas para farmacia!!" textFill="#f9f9f9">
+            <Label layoutX="208.0" layoutY="302.0" text="Bienvenido al mejor punto de ventas para farmacia!!" textFill="#f9f9f9">
                <font>
                   <Font name="Georgia" size="14.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Pane prefHeight="41.0" prefWidth="718.0">
+      <AnchorPane layoutY="47.0" prefHeight="41.0" prefWidth="718.0" style="-fx-background-color: #f9f9f9;">
          <children>
-            <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Caja" />
-            <Button fx:id="finSesion" layoutX="513.0" layoutY="6.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="99.0" style="-fx-background-color: #138d75;" text="Cerrar Sesion" textFill="#f9f9f9" />
-            <Button layoutX="631.0" layoutY="6.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="73.0" style="-fx-background-color: #138d75;" text="Regresar" textFill="#f9f9f9" />
-            <Button layoutX="92.0" layoutY="7.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Ventas" />
-            <Button layoutX="171.0" layoutY="7.0" mnemonicParsing="false" text="Productos" />
-            <Button layoutX="249.0" layoutY="7.0" mnemonicParsing="false" text="Empleados" />
-            <Button layoutX="335.0" layoutY="7.0" mnemonicParsing="false" text="Reportes" />
+            <Button fx:id="ventasAdmin" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" text="Ventas" />
+            <Button fx:id="productosAdmin" layoutX="131.0" layoutY="8.0" mnemonicParsing="false" text="Productos" />
+            <Button fx:id="empleadosAdmin" layoutX="213.0" layoutY="8.0" mnemonicParsing="false" text="Empleados" />
+            <Button fx:id="cortesAdmin" layoutX="299.0" layoutY="8.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Cortes" />
+            <Button fx:id="reportesAdmin" layoutX="372.0" layoutY="8.0" mnemonicParsing="false" text="Reportes" />
+            <Button fx:id="cajaAdmin" layoutX="77.0" layoutY="8.0" mnemonicParsing="false" text="Caja" />
          </children>
-      </Pane>
+      </AnchorPane>
    </children>
 </AnchorPane>
