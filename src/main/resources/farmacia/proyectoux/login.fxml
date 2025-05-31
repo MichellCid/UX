@@ -30,7 +30,7 @@
       <Pane layoutX="415.0" prefHeight="463.0" prefWidth="304.0">
          <children>
             <ComboBox fx:id="usuarioLogin" layoutX="91.0" layoutY="185.0" prefWidth="150.0" />
-            <Button fx:id="iniciarSesion" layoutX="140.0" layoutY="391.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Entrar" textFill="#f9f9f9" />
+            <Button fx:id="iniciarSesion" layoutX="140.0" layoutY="391.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Entrar" textFill="#f9f9f9" onAction="#handleIniciarSesion"/>
             <Label layoutX="100.0" layoutY="106.0" text="Iniciar sesión" textFill="#138d75">
                <font>
                   <Font name="Georgia Bold" size="18.0" />
