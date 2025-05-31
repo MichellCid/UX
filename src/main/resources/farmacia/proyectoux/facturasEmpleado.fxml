@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="farmacia.proyectoux.FacturasEmpleado"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="390.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farmacia.proyectoux.FacturasEmpleado">
+   <children>
+      <AnchorPane prefHeight="36.0" prefWidth="718.0" style="-fx-background-color: #138d75;">
+         <children>
+            <Label layoutX="324.0" layoutY="11.0" text="Facturas" textFill="#f9f9f9">
+               <font>
+                  <Font name="Georgia" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="36.0" prefHeight="355.0" prefWidth="718.0">
+         <children>
+            <TableView fx:id="tablaFacturas" layoutY="104.0" prefHeight="251.0" prefWidth="531.0">
+              <columns>
+                <TableColumn fx:id="idF" prefWidth="59.33334219455719" text="ID" />
+                <TableColumn fx:id="numF" prefWidth="73.33333969116211" text="Numero" />
+                  <TableColumn fx:id="fechaF" prefWidth="93.33334350585938" text="Fecha" />
+                  <TableColumn fx:id="productosF" prefWidth="182.66664123535156" text="Productos" />
+                  <TableColumn fx:id="totalPF" prefWidth="61.3333740234375" text="TotalProductos" />
+                  <TableColumn fx:id="totalF" prefWidth="59.333282470703125" text="Total" />
+              </columns>
+            </TableView>
+            <Button fx:id="verF" layoutX="544.0" layoutY="268.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #138d75;" text="Visualizar" textFill="#f9f9f9" />
+            <Button fx:id="imprimirF" layoutX="544.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #138d75;" text="Imprimir" textFill="#f9f9f9" />
+            <Label layoutX="18.0" layoutY="64.0" text="Buscar" />
+            <Label layoutX="17.0" layoutY="27.0" text="Desde:" />
+            <Label layoutX="213.0" layoutY="27.0" text="Hasta:" />
+            <DatePicker fx:id="inicioFF" layoutX="60.0" layoutY="23.0" prefHeight="25.0" prefWidth="131.0" />
+            <DatePicker fx:id="finFF" layoutX="255.0" layoutY="23.0" prefHeight="25.0" prefWidth="131.0" />
+            <TextField fx:id="buscarF" layoutX="74.0" layoutY="60.0" prefHeight="25.0" prefWidth="290.0" />
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>
