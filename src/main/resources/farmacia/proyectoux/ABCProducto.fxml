@@ -35,7 +35,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f9f9f9;" GridPane.rowIndex="1">
                <children>
                   <Label layoutX="20.0" layoutY="31.0" text="ID" />
                   <Label layoutX="20.0" layoutY="66.0" text="Código" />

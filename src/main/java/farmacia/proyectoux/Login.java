@@ -75,6 +75,14 @@ public class Login {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlDestino));
                 Scene nuevaEscena = new Scene(loader.load());
 
+                if (rol.equals("admin")) {
+                    InicioAdmin controlador = loader.getController();
+                    controlador.setUsuarioActual(usuario);  // método que debes tener en InicioAdmin
+                } else {
+                    InicioEmpleado controlador = loader.getController();
+                    controlador.setUsuarioActual(usuario);  // método que debes tener en InicioEmpleado
+                }
+
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(nuevaEscena);
                 stage.show();

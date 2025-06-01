@@ -27,7 +27,7 @@
             </Label>
          </children>
       </Pane>
-      <AnchorPane layoutY="89.0" prefHeight="390.0" prefWidth="718.0" style="-fx-background-color: #138d75;">
+      <AnchorPane fx:id="mostrarPantallas" layoutY="89.0" prefHeight="390.0" prefWidth="718.0" style="-fx-background-color: #138d75;">
          <children>
             <ImageView fitHeight="225.0" fitWidth="317.0" layoutX="256.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
                <image>
