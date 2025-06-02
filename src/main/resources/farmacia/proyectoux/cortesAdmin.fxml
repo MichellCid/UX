@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="390.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farmacia.proyectoux.CortesAdmin">
    <children>
       <AnchorPane prefHeight="36.0" prefWidth="718.0" style="-fx-background-color: #138d75;">
@@ -21,7 +20,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="36.0" prefHeight="355.0" prefWidth="718.0">
+      <AnchorPane layoutY="36.0" prefHeight="355.0" prefWidth="718.0" style="-fx-background-color: #f9f9f9;">
          <children>
             <TableView layoutY="155.0" prefHeight="200.0" prefWidth="573.0">
               <columns>
