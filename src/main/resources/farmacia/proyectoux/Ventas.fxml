@@ -24,7 +24,7 @@
             <Label layoutX="14.0" layoutY="14.0" text="Producto: " />
             <TextField fx:id="NomPVE" layoutX="76.0" layoutY="10.0" />
             <Label layoutX="14.0" layoutY="56.0" text="Cantidad: " />
-            <Button fx:id="buscarProductoV" layoutX="16.0" layoutY="110.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Buscar producto" textFill="#f9f9f9" />
+            <Button fx:id="buscarProductoV" layoutX="16.0" layoutY="110.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Buscar producto" textFill="#f9f9f9" onAction="#mostrarPanelBusqueda"/>
             <TableView fx:id="tablaProductosVenta" layoutY="149.0" prefHeight="200.0" prefWidth="444.0">
               <columns>
                 <TableColumn fx:id="idP" prefWidth="51.999998688697815" text="ID" />
@@ -36,8 +36,8 @@
               </columns>
             </TableView>
             <TextField fx:id="CantidadPVE" layoutX="76.0" layoutY="52.0" />
-            <Button fx:id="cancelarVenta" layoutX="452.0" layoutY="310.0" mnemonicParsing="false" style="-fx-background-color: fd786f;" text="Cancelar" />
-            <Button fx:id="guardarVenta" layoutX="603.0" layoutY="305.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="91.0" style="-fx-background-color: #138d75;" text="Efectuar" textFill="#f9f9f9">
+            <Button fx:id="cancelarVenta" layoutX="452.0" layoutY="310.0" mnemonicParsing="false" style="-fx-background-color: fd786f;" text="Cancelar" onAction="#cancelarVenta"/>
+            <Button fx:id="guardarVenta" layoutX="603.0" layoutY="305.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="91.0" style="-fx-background-color: #138d75;" text="Efectuar" textFill="#f9f9f9" onAction="#efectuarVenta">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -57,8 +57,8 @@
             <Button layoutX="151.0" layoutY="110.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Agregar producto" textFill="#f9f9f9" />
             <AnchorPane fx:id="busquedaPV" layoutX="217.0" layoutY="-10.0" prefHeight="240.0" prefWidth="454.0" style="-fx-background-color: #d5f9ee; -fx-border-color: #138d75; visibility: false;">
                <children>
-                  <Button fx:id="cancelarBusqueda" layoutX="165.0" layoutY="205.0" mnemonicParsing="false" text="Cancelar" />
-                  <Button fx:id="agregarProducto" layoutX="264.0" layoutY="205.0" mnemonicParsing="false" text="Agregar" />
+                  <Button fx:id="cancelarBusqueda" layoutX="165.0" layoutY="205.0" mnemonicParsing="false" text="Cancelar" onAction="#cancelarBusqueda" />
+                  <Button fx:id="agregarProducto" layoutX="264.0" layoutY="205.0" mnemonicParsing="false" text="Agregar" onAction="#agregarProductoVenta"/>
                   <TableView fx:id="tablaBusqueda" layoutX="26.0" layoutY="66.0" prefHeight="131.0" prefWidth="402.0">
                     <columns>
                       <TableColumn fx:id="idBusqueda" prefWidth="59.33332824707031" text="ID" />

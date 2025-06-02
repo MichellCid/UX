@@ -42,6 +42,8 @@
             <Label fx:id="entradasCorte" layoutX="163.0" layoutY="117.0" text="Label" />
             <Label fx:id="salidasCorte" layoutX="163.0" layoutY="153.0" text="Label" />
             <Label fx:id="totalEsperado" layoutX="163.0" layoutY="194.0" text="Label" />
+            <Label layoutX="35.0" layoutY="222.0" text="Diferencia:" />
+            <Label fx:id="diferenciaCaja" layoutX="163.0" layoutY="222.0" text="Label" />
          </children>
       </AnchorPane>
    </children>
