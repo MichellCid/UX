@@ -21,15 +21,15 @@
       </AnchorPane>
       <AnchorPane layoutY="36.0" prefHeight="355.0" prefWidth="718.0" style="-fx-background-color: #f9f9f9;">
          <children>
-            <TableView fx:id="tablaProductos" layoutY="122.0" prefHeight="233.0" prefWidth="718.0">
+            <TableView fx:id="tablaProductos" layoutX="29.0" layoutY="122.0" prefHeight="233.0" prefWidth="670.0">
                <columns>
-                  <TableColumn fx:id="idPE" prefWidth="49.33331298828125" text="ID" />
-                  <TableColumn fx:id="codigoPE" prefWidth="74.0" text="Código" />
-                  <TableColumn fx:id="NomPE" prefWidth="133.99996948242188" text="Nombre" />
-                  <TableColumn fx:id="DescPE" prefWidth="255.3333740234375" text="Descripción" />
-                  <TableColumn fx:id="PrecioVPE" minWidth="0.0" prefWidth="82.0" text="Precio Venta" />
-                  <TableColumn fx:id="cantPE" prefWidth="56.66668701171875" text="Cantidad" />
-                  <TableColumn fx:id="ubicacionPE" prefWidth="70.0" text="Ubicación" />
+                  <TableColumn fx:id="idPE" prefWidth="32.00003242492676" text="ID" />
+                  <TableColumn fx:id="codigoPE" prefWidth="70.66662979125977" text="Código" />
+                  <TableColumn fx:id="NomPE" prefWidth="154.6667022705078" text="Nombre" />
+                  <TableColumn fx:id="DescPE" prefWidth="161.3333740234375" text="Descripción" />
+                  <TableColumn fx:id="PrecioVPE" minWidth="0.0" prefWidth="106.66671752929688" text="Precio Venta" />
+                  <TableColumn fx:id="cantPE" prefWidth="97.33331298828125" text="Cantidad" />
+                  <TableColumn fx:id="ubicacionPE" prefWidth="102.0" text="Ubicación" />
                </columns>
             </TableView>
             <TextField fx:id="buscarProductoE" layoutX="91.0" layoutY="70.0" prefHeight="25.0" prefWidth="353.0" />

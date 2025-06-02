@@ -1,4 +1,5 @@
 package farmacia.proyectoux;
 
-public class ABCProducto {
+public class ABCProducto{
+
 }

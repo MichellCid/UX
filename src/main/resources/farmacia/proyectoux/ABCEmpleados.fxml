@@ -25,7 +25,7 @@
           <RowConstraints maxHeight="322.99998474121094" minHeight="10.0" prefHeight="168.00002034505206" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView prefHeight="170.0" prefWidth="718.0" GridPane.rowIndex="2">
+            <TableView fx:id="tablaEmpleados" prefHeight="170.0" prefWidth="718.0" GridPane.rowIndex="2">
               <columns>
                 <TableColumn fx:id="idET" prefWidth="53.999998688697815" text="ID" />
                 <TableColumn fx:id="nomET" prefWidth="96.66665267944336" text="Nombre" />
