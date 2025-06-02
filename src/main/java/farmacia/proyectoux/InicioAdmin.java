@@ -40,10 +40,10 @@ public class InicioAdmin {
         fecha.setText(LocalDate.now().format(formatter));
 
         // Eventos de botones para cargar pantallas
-        ventasAdmin.setOnAction(e -> cargarPantalla("/farmacia/proyectoux/Ventas.fxml"));
+        ventasAdmin.setOnAction(e -> cargarPantalla("/farmacia/proyectoux/ventasAdmin.fxml"));
         productosAdmin.setOnAction(e -> cargarPantalla("/farmacia/proyectoux/ABCProducto.fxml"));
         empleadosAdmin.setOnAction(e -> cargarPantalla("/farmacia/proyectoux/ABCEmpleados.fxml"));
-        //cortesAdmin.setOnAction(e -> cargarPantalla("/farmacia/proyectoux/cortes.fxml"));
+        cortesAdmin.setOnAction(e -> cargarPantalla("/farmacia/proyectoux/cortesAdmin.fxml"));
         reportesAdmin.setOnAction(e -> cargarPantalla("/farmacia/proyectoux/reportes.fxml"));
         //cajaAdmin.setOnAction(e -> cargarPantalla("/farmacia/proyectoux/caja.fxml"));
 

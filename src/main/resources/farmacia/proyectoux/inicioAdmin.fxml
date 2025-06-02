@@ -44,11 +44,10 @@
       <AnchorPane layoutY="47.0" prefHeight="41.0" prefWidth="718.0" style="-fx-background-color: #f9f9f9;">
          <children>
             <Button fx:id="ventasAdmin" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" text="Ventas" />
-            <Button fx:id="productosAdmin" layoutX="131.0" layoutY="8.0" mnemonicParsing="false" text="Productos" />
-            <Button fx:id="empleadosAdmin" layoutX="213.0" layoutY="8.0" mnemonicParsing="false" text="Empleados" />
-            <Button fx:id="cortesAdmin" layoutX="299.0" layoutY="8.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Cortes" />
-            <Button fx:id="reportesAdmin" layoutX="372.0" layoutY="8.0" mnemonicParsing="false" text="Reportes" />
-            <Button fx:id="cajaAdmin" layoutX="77.0" layoutY="8.0" mnemonicParsing="false" text="Caja" />
+            <Button fx:id="productosAdmin" layoutX="140.0" layoutY="8.0" mnemonicParsing="false" text="Productos" />
+            <Button fx:id="empleadosAdmin" layoutX="218.0" layoutY="8.0" mnemonicParsing="false" text="Empleados" />
+            <Button fx:id="cortesAdmin" layoutX="74.0" layoutY="8.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Cortes" />
+            <Button fx:id="reportesAdmin" layoutX="301.0" layoutY="8.0" mnemonicParsing="false" text="Reportes" />
          </children>
       </AnchorPane>
    </children>
