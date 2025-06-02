@@ -58,6 +58,13 @@ public class Ventas {
 
         busquedaAgregarVenta.textProperty().addListener((obs, oldVal, newVal) -> buscarProductoEnBD(newVal));
 
+        ImporteCliente.setOnAction(e -> calcularCambio());
+
+        ImporteCliente.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal) { // Perdió el foco
+                calcularCambio();
+            }
+        });
     }
 
     private void buscarProductoEnBD(String valor) {
