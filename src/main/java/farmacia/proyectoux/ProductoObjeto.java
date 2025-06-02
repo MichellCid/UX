@@ -18,7 +18,7 @@ public class ProductoObjeto {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precioCompra = precioCompra;
-        this.precioCompra = precioVenta;
+        this.PrecioVenta = precioVenta;
         this.cantidad = cantidad;
         this.categoria = categoria;
         this.ubicacion = ubicacion;
@@ -31,7 +31,7 @@ public class ProductoObjeto {
         this.nombre = nombre;
         this.descripcion = descripcion;
 
-        this.precioCompra = precioVenta;
+        this.PrecioVenta = precioVenta;
         this.cantidad = cantidad;
 
 

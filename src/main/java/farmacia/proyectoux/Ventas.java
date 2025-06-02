@@ -39,18 +39,19 @@ public class Ventas {
         idP.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomP.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         descP.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
-        cantVendida.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+        cantVendida.setCellValueFactory(new PropertyValueFactory<>("cantidadVendida"));
         precioUnitario.setCellValueFactory(new PropertyValueFactory<>("precio"));
         totalPV.setCellValueFactory(new PropertyValueFactory<>("total"));
 
-        ObservableList<ProductoVenta> lista = FXCollections.observableArrayList();
-        tablaProductosVenta.setItems(lista);
+        //ObservableList<ProductoVenta> lista = FXCollections.observableArrayList();
+        tablaProductosVenta.setItems(listaVenta);
 
         idBusqueda.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomBusquedaVenta.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         descBusquedaVenta.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         dispBusquedaVenta.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         precioBPV.setCellValueFactory(new PropertyValueFactory<>("precioVenta"));
+
         //totalPV.setCellValueFactory(new PropertyValueFactory<>("total"));
 
         tablaBusqueda.setItems(listaBusqueda);
@@ -69,6 +70,8 @@ public class Ventas {
             stmt.setString(3, "%" + valor + "%");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
+                System.out.println("Precio en ResultSet: " + rs.getDouble("precioVenta"));
+
                 ProductoObjeto p = new ProductoObjeto(
                         rs.getInt("id"),
                         rs.getString("nombre"),
@@ -76,6 +79,7 @@ public class Ventas {
                         rs.getDouble("precioVenta"),
                         rs.getInt("cantidad")
                 );
+                //System.out.println("Precio del producto: " + p.getPrecioVenta());
                 listaBusqueda.add(p);
             }
         } catch (SQLException e) {
@@ -87,11 +91,15 @@ public class Ventas {
     @FXML
     private void agregarProductoVenta() {
         ProductoObjeto seleccionado = tablaBusqueda.getSelectionModel().getSelectedItem();
+
         if (seleccionado != null) {
             try {
+                System.out.println("Precio del producto: " + seleccionado.getPrecioVenta());
+
                 int cantidad = Integer.parseInt(CantidadPVE.getText());
                 if (cantidad > 0 && cantidad <= seleccionado.getCantidad()) {
                     double total = cantidad * seleccionado.getPrecioVenta();
+                    double precio = seleccionado.getPrecioVenta();
                     ProductoVenta venta = new ProductoVenta(seleccionado.getId(), seleccionado.getNombre(),
                             seleccionado.getDescripcion(), cantidad, seleccionado.getPrecioVenta(), total);
                     listaVenta.add(venta);
@@ -225,6 +233,7 @@ public class Ventas {
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT * FROM producto WHERE estado = 1")) {
             while (rs.next()) {
+
                 ProductoObjeto p = new ProductoObjeto(
                         rs.getInt("id"),
                         rs.getString("nombre"),
@@ -232,6 +241,8 @@ public class Ventas {
                         rs.getDouble("precioVenta"),
                         rs.getInt("cantidad")
                 );
+                System.out.println("Precio del producto: " + p.getPrecioVenta());
+
                 listaBusqueda.add(p);
             }
         } catch (SQLException e) {

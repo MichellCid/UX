@@ -18,13 +18,43 @@ public class ProductoVenta {
         this.total = total;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    // Getters y setters para JavaFX (si usas Property puedes hacerlo también)
     public int getId() { return id; }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getNombre() { return nombre; }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public String getDescripcion() { return descripcion; }
+
+    public void setCantidadVendida(int cantidadVendida) {
+        this.cantidadVendida = cantidadVendida;
+    }
+
     public int getCantidadVendida() { return cantidadVendida; }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
     public double getPrecio() { return precio; }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
     public double getTotal() { return total; }
+
+
+
 }
 
