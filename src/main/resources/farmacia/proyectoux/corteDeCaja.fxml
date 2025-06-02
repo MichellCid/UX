@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="390.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farmacia.proyectoux.CorteDeCaja">
    <children>
       <AnchorPane prefHeight="36.0" prefWidth="718.0" style="-fx-background-color: #138d75;">
@@ -18,7 +17,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="36.0" prefHeight="355.0" prefWidth="718.0">
+      <AnchorPane layoutY="36.0" prefHeight="355.0" prefWidth="718.0" style="-fx-background-color: #f9f9f9;">
          <children>
             <Button fx:id="cerrarCorte" layoutX="624.0" layoutY="315.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Cerrar corte" textFill="#f9f9f9" />
             <Label layoutX="23.0" layoutY="14.0" text="Usario: " />
