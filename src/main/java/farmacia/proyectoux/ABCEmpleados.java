@@ -28,10 +28,13 @@ public class ABCEmpleados {
     @FXML private TextField usuarioE;
     @FXML private TextField buscarEmpleado;
     @FXML private ComboBox<String> rol;
+    @FXML private ComboBox<String> BoxParametros;
+
 
     @FXML private Button agregarE;
     @FXML private Button editarE;
     @FXML private Button eliminarE;
+    @FXML private Button Buscar;
 
     private ObservableList<Empleados> listaEmpleados = FXCollections.observableArrayList();
     private Empleados empleadoSeleccionado;
@@ -39,6 +42,8 @@ public class ABCEmpleados {
     @FXML
     private void initialize() {
         rol.getItems().addAll("admin", "empleado");
+        BoxParametros.getItems().addAll("Nombre", "Apellidos", "Direccion", "Usuario", "Rol", "Mostrar todos");
+
 
         configurarTabla();
         cargarEmpleados();
@@ -46,7 +51,9 @@ public class ABCEmpleados {
         agregarE.setOnAction(e -> agregarEmpleado());
         editarE.setOnAction(e -> editarEmpleado());
         eliminarE.setOnAction(e -> eliminarEmpleado());
+        Buscar.setOnAction(e -> buscarPorParametro());
     }
+
 
     private void configurarTabla() {
         idET.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -231,4 +238,62 @@ public class ABCEmpleados {
         alerta.setContentText(contenido);
         alerta.showAndWait();
     }
+    private void buscarPorParametro() {
+        String parametro = BoxParametros.getValue();
+        String valorBusqueda = buscarEmpleado.getText().trim();
+
+        if (parametro == null) {
+            mostrarAlerta("Parámetro inválido", "Debes seleccionar un parámetro.", Alert.AlertType.WARNING);
+            return;
+        }
+
+        listaEmpleados.clear();
+
+        // Si la opción es "mostrar todos", cargar todos los empleados activos
+        if (parametro.equals("mostrar todos")) {
+            cargarEmpleados();
+            return;
+        }
+
+        if (valorBusqueda.isEmpty()) {
+            mostrarAlerta("Búsqueda vacía", "Escribe algo para buscar.", Alert.AlertType.WARNING);
+            return;
+        }
+
+        String consulta = "SELECT * FROM empleados WHERE estado = 'alta' AND " + parametro + " LIKE ?";
+
+        try (Connection connection = conexionBD.getConexion();
+             PreparedStatement statement = connection.prepareStatement(consulta)) {
+
+            statement.setString(1, "%" + valorBusqueda + "%");
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Empleados empleado = new Empleados(
+                        resultSet.getInt("id"),
+                        resultSet.getString("nombre"),
+                        resultSet.getString("apellidos"),
+                        resultSet.getInt("telefono"),
+                        resultSet.getString("direccion"),
+                        resultSet.getString("estado"),
+                        resultSet.getString("usuario"),
+                        resultSet.getString("contraseña"),
+                        resultSet.getString("rol")
+                );
+                listaEmpleados.add(empleado);
+            }
+
+            tablaEmpleados.setItems(listaEmpleados);
+
+            if (listaEmpleados.isEmpty()) {
+                mostrarAlerta("Sin resultados", "No se encontraron empleados con ese criterio.", Alert.AlertType.INFORMATION);
+            }
+
+        } catch (SQLException e) {
+            mostrarAlerta("Error", "No se pudo realizar la búsqueda", Alert.AlertType.ERROR);
+            e.printStackTrace();
+        }
+    }
+
+
 }

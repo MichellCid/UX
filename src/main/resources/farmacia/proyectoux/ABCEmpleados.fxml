@@ -49,7 +49,7 @@
                <children>
                   <Label layoutX="15.0" layoutY="22.0" text="Nombre" />
                   <Label layoutX="13.0" layoutY="54.0" text="Apellidos" />
-                  <Label layoutX="20.0" layoutY="160.0" text="Buscar" />
+                  <Label layoutX="20.0" layoutY="131.0" text="Buscar" />
                   <Label layoutX="258.0" layoutY="22.0" text="Telefono" />
                   <Label layoutX="256.0" layoutY="55.0" text="Direccion" />
                   <Label layoutX="489.0" layoutY="55.0" text="Usuario" />
@@ -60,12 +60,14 @@
                   <TextField fx:id="direcE" layoutX="320.0" layoutY="51.0" />
                   <TextField fx:id="ContraseñaE" layoutX="555.0" layoutY="18.0" />
                   <TextField fx:id="usuarioE" layoutX="555.0" layoutY="58.0" />
-                  <TextField fx:id="buscarEmpleado" layoutX="71.0" layoutY="156.0" prefHeight="25.0" prefWidth="310.0" />
+                  <TextField fx:id="buscarEmpleado" layoutX="69.0" layoutY="127.0" prefHeight="25.0" prefWidth="127.0" />
                   <Button fx:id="agregarE" layoutX="500.0" layoutY="156.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Agregar" textFill="#f9f9f9" />
                   <Button fx:id="editarE" layoutX="576.0" layoutY="156.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Editar" textFill="#f9f9f9" />
                   <Button fx:id="eliminarE" layoutX="638.0" layoutY="156.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Eliminar" textFill="#f9f9f9" />
-                  <Label layoutX="28.0" layoutY="89.0" text="Rol" />
+                  <Label layoutX="20.0" layoutY="173.0" text="Parametro " />
                   <ComboBox fx:id="rol" layoutX="76.0" layoutY="85.0" prefWidth="150.0" />
+                  <ComboBox fx:id="BoxParametros" layoutX="90.0" layoutY="169.0" prefWidth="150.0" />
+                  <Button fx:id="Buscar" layoutX="211.0" layoutY="127.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Buscar" textFill="#f9f9f9" />
                </children>
             </Pane>
          </children>
