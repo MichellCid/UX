@@ -81,9 +81,9 @@ public class Ventas {
 
                 ProductoObjeto p = new ProductoObjeto(
                         rs.getInt("id"),
-                        rs.getString("nombre"),
+                        rs.getString("Nombre"),
                         rs.getString("descripcion"),
-                        rs.getDouble("precioVenta"),
+                        rs.getDouble("PrecioVenta"),
                         rs.getInt("cantidad")
                 );
                 //System.out.println("Precio del producto: " + p.getPrecioVenta());

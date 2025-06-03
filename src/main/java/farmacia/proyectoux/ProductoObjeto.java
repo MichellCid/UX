@@ -8,11 +8,11 @@ public class ProductoObjeto {
     private double precioCompra;
     private double PrecioVenta;
     private int cantidad;
-    private int categoria;
+    private String categoria;
     private String ubicacion;
     private boolean estado;
 
-    public ProductoObjeto(int id, int codigo, String nombre, String descripcion, double precioCompra, double precioVenta, int cantidad, int categoria, String ubicacion, boolean estado){
+    public ProductoObjeto(int id, int codigo, String nombre, String descripcion, double precioCompra, double precioVenta, int cantidad, String categoria, String ubicacion, boolean estado){
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -82,7 +82,7 @@ public class ProductoObjeto {
     }
 
     public void setPrecioVenta(double precioVenta) {
-        PrecioVenta = precioVenta;
+        precioVenta = precioVenta;
     }
 
     public int getCantidad() {
@@ -93,11 +93,11 @@ public class ProductoObjeto {
         this.cantidad = cantidad;
     }
 
-    public int getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(int categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 

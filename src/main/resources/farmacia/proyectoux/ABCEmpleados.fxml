@@ -68,6 +68,7 @@
                   <ComboBox fx:id="rol" layoutX="76.0" layoutY="85.0" prefWidth="150.0" />
                   <ComboBox fx:id="BoxParametros" layoutX="90.0" layoutY="169.0" prefWidth="150.0" />
                   <Button fx:id="Buscar" layoutX="211.0" layoutY="127.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Buscar" textFill="#f9f9f9" />
+                  <Label layoutX="40.0" layoutY="89.0" text="Rol" />
                </children>
             </Pane>
          </children>

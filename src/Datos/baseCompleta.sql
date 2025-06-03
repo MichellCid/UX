@@ -38,7 +38,9 @@ CREATE TABLE `categoria` (
 
 LOCK TABLES `categoria` WRITE;
 /*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
-INSERT INTO `categoria` VALUES (1,'Equipo medico','Todos los productos de equipamiento medico');
+INSERT INTO `categoria` VALUES (1,'Farmaceutico','Todos los productos de equipamiento medico');
+INSERT INTO `categoria` VALUES (2,'Parafarmaceutico', 'Productos de cuidado personal y salud complementaria');
+
 /*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,7 +172,10 @@ CREATE TABLE `producto` (
 LOCK TABLES `producto` WRITE;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
 INSERT INTO `producto` VALUES (1,2111,'Jeringas','Jeringas de 5ml esterilizada',2.5,5,74,1,'Estante primario',1);
-
+INSERT INTO `producto` VALUES (3, 'Termómetro Digital', 'Termómetro digital para medición de temperatura', 8.0, 15.0, 50, 1, 'Estante secundario', 1);
+INSERT INTO `producto` VALUES  (4, 'Guantes Desechables', 'Guantes de látex para uso médico', 3.0, 7.0, 200, 1, 'Estante primario', 1);
+INSERT INTO `producto` VALUES  (5, 'Crema Hidratante', 'Crema para cuidado de la piel seca', 4.0, 8.0, 120, 2, 'Estante parafarmaceutico', 1);
+INSERT INTO `producto` VALUES  (6, 'Spray Nasal', 'Spray para descongestionar vías nasales', 4.5, 9.0, 70, 2, 'Estante parafarmaceutico', 1);
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
