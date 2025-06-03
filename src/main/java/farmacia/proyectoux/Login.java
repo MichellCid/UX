@@ -58,7 +58,7 @@ public class Login {
 
         // Validar las credenciales
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ux", "Billie", "1234");
-             PreparedStatement stmt = conn.prepareStatement("SELECT rol FROM empleados WHERE usuario = ? AND contraseña = ? AND estado = 'alta'")) {
+             PreparedStatement stmt = conn.prepareStatement("SELECT id, rol FROM empleados WHERE usuario = ? AND contraseña = ? AND estado = 'alta'")) {
 
             stmt.setString(1, usuario);
             stmt.setString(2, contraseña);
@@ -66,6 +66,7 @@ public class Login {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
+                int idEmpleado = rs.getInt("id");
                 String rol = rs.getString("rol");
 
                 // Determinar la vista según el rol
@@ -77,10 +78,14 @@ public class Login {
 
                 if (rol.equals("admin")) {
                     InicioAdmin controlador = loader.getController();
-                    controlador.setUsuarioActual(usuario);  // método que debes tener en InicioAdmin
+                    controlador.setUsuarioActual(usuario);
+                    //controlador.setIdEmpleadoActual(idEmpleado);
+
                 } else {
                     InicioEmpleado controlador = loader.getController();
-                    controlador.setUsuarioActual(usuario);  // método que debes tener en InicioEmpleado
+                    controlador.setUsuarioActual(usuario);
+                    controlador.setIdEmpleadoActual(idEmpleado);
+
                 }
 
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

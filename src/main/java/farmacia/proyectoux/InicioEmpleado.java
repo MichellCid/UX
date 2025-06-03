@@ -32,16 +32,42 @@ public class InicioEmpleado {
         usuarioEmpleado.setText(usuario);
         fechaEmpleado.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     }
+    private int idEmpleadoActual;
+
+    public void setIdEmpleadoActual(int idEmpleado) {
+        this.idEmpleadoActual = idEmpleado;
+        System.out.println("ID empleado recibido en InicioEmpleado: " + idEmpleado);
+    }
+
+    public int getIdEmpleadoActual() {
+        return idEmpleadoActual;
+    }
 
     @FXML
     private void initialize() {
-        ventasEmpleado.setOnAction(e -> cargarPantalla("/farmacia/proyectoux/Ventas.fxml"));
+        ventasEmpleado.setOnAction(e -> cargarPantallaVentas());
         productosEmpleados.setOnAction(e -> cargarPantalla("/farmacia/proyectoux/productosEmpleado.fxml"));
         facturasEmpleados.setOnAction(e -> cargarPantalla("/farmacia/proyectoux/facturasEmpleado.fxml"));
         corteEmpleado.setOnAction(e -> cargarPantalla("/farmacia/proyectoux/corteDeCaja.fxml"));
 
         finSesion.setOnAction(e -> cerrarSesion());
     }
+
+    private void cargarPantallaVentas() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/farmacia/proyectoux/Ventas.fxml"));
+            Parent pane = loader.load();
+
+            // Obtener el controlador y pasar el ID del empleado
+            Ventas controlador = loader.getController();
+            controlador.setIdEmpleadoActual(idEmpleadoActual); // Este debe estar definido como variable en esta clase
+
+            mostrarPantallas.getChildren().setAll(pane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void cargarPantalla(String rutaFXML) {
         try {

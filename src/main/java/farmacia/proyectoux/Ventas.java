@@ -32,6 +32,14 @@ public class Ventas {
     private Connection conectar() throws SQLException {
         return DriverManager.getConnection("jdbc:mysql://localhost/ux", "Billie", "1234"); // Cambia según tu config
     }
+    private int idEmpleadoActual;
+
+    public void setIdEmpleadoActual(int idEmpleado) {
+        this.idEmpleadoActual = idEmpleado;
+    }
+    public int getIdEmpleadoActual(){
+        return this.idEmpleadoActual;
+    }
 
     @FXML
     public void initialize() {
@@ -168,7 +176,7 @@ public class Ventas {
                 ventaStmt.setDouble(2, totalVenta);
                 ventaStmt.setDouble(3, importeCliente);
                 ventaStmt.setDouble(4, cambio);
-                ventaStmt.setInt(5, 1); // ID de empleado
+                ventaStmt.setInt(5, getIdEmpleadoActual()); // ID de empleado
 
                 ventaStmt.executeUpdate();
 
