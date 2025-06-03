@@ -22,24 +22,24 @@
       </AnchorPane>
       <AnchorPane layoutY="36.0" prefHeight="355.0" prefWidth="718.0" style="-fx-background-color: #f9f9f9;">
          <children>
-            <TableView layoutY="155.0" prefHeight="200.0" prefWidth="529.0">
+            <TableView fx:id="tablaVentas" layoutY="155.0" prefHeight="200.0" prefWidth="529.0">
               <columns>
-                <TableColumn prefWidth="65.33334600925446" text="ID" />
-                <TableColumn prefWidth="154.00005340576172" text="Usuario" />
-                  <TableColumn prefWidth="110.66664123535156" text="Fecha" />
-                  <TableColumn prefWidth="107.3333740234375" text="Hora" />
-                  <TableColumn prefWidth="91.99996948242188" text="Total" />
+                <TableColumn fx:id="colId" prefWidth="65.33334600925446" text="ID" />
+                <TableColumn fx:id="colUsuario" prefWidth="154.00005340576172" text="Usuario" />
+                  <TableColumn fx:id="colFecha" prefWidth="110.66664123535156" text="Fecha" />
+                  <TableColumn fx:id="colHora" prefWidth="107.3333740234375" text="Hora" />
+                  <TableColumn fx:id="colTotal" prefWidth="91.99996948242188" text="Total" />
               </columns>
             </TableView>
-            <Button layoutX="562.0" layoutY="304.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Mostrar detalles" textFill="#f9f9f9" />
-            <DatePicker layoutX="63.0" layoutY="44.0" />
-            <DatePicker layoutX="335.0" layoutY="44.0" />
+            <Button fx:id="btnMostrarDetalles" layoutX="562.0" layoutY="304.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Mostrar detalles" textFill="#f9f9f9" />
+            <DatePicker fx:id="dateDesde" layoutX="63.0" layoutY="44.0" />
+            <DatePicker fx:id="dateHasta" layoutX="335.0" layoutY="44.0" />
             <Label layoutX="210.0" layoutY="14.0" text="Mostrar venta por fechas" />
             <Label layoutX="14.0" layoutY="48.0" text="Desde" />
             <Label layoutX="290.0" layoutY="48.0" text="Hasta" />
-            <Label layoutX="28.0" layoutY="117.0" text="Buscar" />
-            <TextField layoutX="95.0" layoutY="113.0" prefHeight="25.0" prefWidth="390.0" />
-            <Button layoutX="562.0" layoutY="264.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #138d75;" text="Cancelar venta" textFill="#f9f9f9" />
+            <Label layoutX="28.0" layoutY="117.0" prefHeight="17.0" prefWidth="90.0" text="Buscar por id:" />
+            <TextField fx:id="campoBusqueda" layoutX="125.0" layoutY="113.0" prefHeight="25.0" prefWidth="75.0" />
+            <Button fx:id="btnCancelarVenta" layoutX="562.0" layoutY="264.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #138d75;" text="Cancelar venta" textFill="#f9f9f9" />
          </children>
       </AnchorPane>
    </children>

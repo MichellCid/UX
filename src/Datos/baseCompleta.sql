@@ -137,7 +137,8 @@ CREATE TABLE `empleados` (
 
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
-INSERT INTO `empleados` VALUES (1,'Maria','Morales',1234567890,'avenida Xalapa','alta','admin','123','admin'),(2,'Nadia','Nuñes',1235567830,'avenida Avila Camacho','alta','empleado','1234','empleado');
+INSERT INTO `empleados` VALUES (1,'Maria','Morales',1234567890,'avenida Xalapa','alta','admin','123','admin');
+INSERT INTO `empleados` VALUES (2,'Nadia','Nuñes',1235567830,'avenida Avila Camacho','alta','empleado','1234','empleado');
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
