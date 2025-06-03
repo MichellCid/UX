@@ -3,9 +3,14 @@ package farmacia.proyectoux;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.Optional;
 
@@ -30,11 +35,11 @@ public class ABCEmpleados {
     @FXML private ComboBox<String> rol;
     @FXML private ComboBox<String> BoxParametros;
 
-
     @FXML private Button agregarE;
     @FXML private Button editarE;
     @FXML private Button eliminarE;
     @FXML private Button Buscar;
+    @FXML private Button btnAtras;
 
     private ObservableList<Empleados> listaEmpleados = FXCollections.observableArrayList();
     private Empleados empleadoSeleccionado;
@@ -42,8 +47,7 @@ public class ABCEmpleados {
     @FXML
     private void initialize() {
         rol.getItems().addAll("admin", "empleado");
-        BoxParametros.getItems().addAll("Nombre", "Apellidos", "Direccion", "Usuario", "Rol", "Mostrar todos");
-
+        BoxParametros.getItems().addAll("nombre", "apellidos", "direccion", "usuario", "rol", "mostrar todos");
 
         configurarTabla();
         cargarEmpleados();
@@ -53,7 +57,6 @@ public class ABCEmpleados {
         eliminarE.setOnAction(e -> eliminarEmpleado());
         Buscar.setOnAction(e -> buscarPorParametro());
     }
-
 
     private void configurarTabla() {
         idET.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -238,6 +241,7 @@ public class ABCEmpleados {
         alerta.setContentText(contenido);
         alerta.showAndWait();
     }
+
     private void buscarPorParametro() {
         String parametro = BoxParametros.getValue();
         String valorBusqueda = buscarEmpleado.getText().trim();
@@ -249,8 +253,7 @@ public class ABCEmpleados {
 
         listaEmpleados.clear();
 
-        // Si la opción es "mostrar todos", cargar todos los empleados activos
-        if (parametro.equals("mostrar todos")) {
+        if (parametro.equalsIgnoreCase("mostrar todos")) {
             cargarEmpleados();
             return;
         }
@@ -260,7 +263,9 @@ public class ABCEmpleados {
             return;
         }
 
-        String consulta = "SELECT * FROM empleados WHERE estado = 'alta' AND " + parametro + " LIKE ?";
+        String columnaBD = parametro.toLowerCase();
+
+        String consulta = "SELECT * FROM empleados WHERE estado = 'alta' AND " + columnaBD + " LIKE ?";
 
         try (Connection connection = conexionBD.getConexion();
              PreparedStatement statement = connection.prepareStatement(consulta)) {
@@ -295,5 +300,20 @@ public class ABCEmpleados {
         }
     }
 
+    @FXML
+    public void regresarInicio() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InicioAdmin.fxml"));
+            Parent root = loader.load();
 
+            Stage stage = (Stage) btnAtras.getScene().getWindow();
+            Scene nuevaEscena = new Scene(root);
+            stage.setScene(nuevaEscena);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarAlerta("Error", "Error al cargar la pantalla de inicio: " + e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
 }

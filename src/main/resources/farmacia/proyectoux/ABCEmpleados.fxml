@@ -43,6 +43,7 @@
                         <Font name="Georgia" size="18.0" />
                      </font>
                   </Label>
+                  <Button fx:id="btnAtras" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#regresarInicio" text="Atras" />
                </children>
             </Pane>
             <Pane prefHeight="209.0" prefWidth="718.0" style="-fx-background-color: #f9f9f9;" GridPane.rowIndex="1">
