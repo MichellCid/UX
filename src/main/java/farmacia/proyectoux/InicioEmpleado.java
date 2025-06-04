@@ -48,7 +48,8 @@ public class InicioEmpleado {
         ventasEmpleado.setOnAction(e -> cargarPantallaVentas());
         productosEmpleados.setOnAction(e -> cargarPantalla("/farmacia/proyectoux/productosEmpleado.fxml"));
         facturasEmpleados.setOnAction(e -> cargarPantallaFacturas());
-        corteEmpleado.setOnAction(e -> cargarPantalla("/farmacia/proyectoux/corteDeCaja.fxml"));
+        corteEmpleado.setOnAction(e -> cargarPantallaCorteDeCaja());
+
 
         finSesion.setOnAction(e -> cerrarSesion());
     }
@@ -104,5 +105,20 @@ public class InicioEmpleado {
             e.printStackTrace();
         }
     }
+
+    private void cargarPantallaCorteDeCaja() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/farmacia/proyectoux/corteDeCaja.fxml"));
+            Parent pane = loader.load();
+
+            CorteDeCaja controlador = loader.getController();
+            controlador.setIdEmpleadoActual(idEmpleadoActual);
+
+            mostrarPantallas.getChildren().setAll(pane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
