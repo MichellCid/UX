@@ -36,8 +36,18 @@ public class Reportes {
     @FXML private TextArea ObservacionesVen;
     @FXML private Button btnImprimirVen;
 
+    // Componentes para reporte de productos
+    @FXML private TableView<ProductoObjeto> tablaProductos;
+    @FXML private TableColumn<ProductoObjeto, Integer> IdProductoCol, CodigoProductoCol, CantidadProductoCol;
+    @FXML private TableColumn<ProductoObjeto, String> NombreProductoCol, DescripcionProductoCol, CategoriaProductoCol;
+    @FXML private TableColumn<ProductoObjeto, Double> PrecioComProductoCol, PrecioVenProductoCol;
+    @FXML private DatePicker FechaInicioProductos, FechaFinProductos;
+    @FXML private TextArea descripcionesproductos;
+    @FXML private Button ImprimirProductos;
+
     private ObservableList<EmpleadoReporte> listaEmpleados = FXCollections.observableArrayList();
     private ObservableList<VentaReporte> listaVentas = FXCollections.observableArrayList();
+    private ObservableList<ProductoObjeto> listaProductos = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
@@ -55,11 +65,20 @@ public class Reportes {
         fechaFinalVen.setValue(LocalDate.now());
         btnImprimirVen.setOnAction(event -> imprimirReporteVentas());
 
+        // Configuración para productos
+        configurarTablaProductos();
+        FechaInicioProductos.setValue(LocalDate.now().minusDays(7));
+        FechaFinProductos.setValue(LocalDate.now());
+        ImprimirProductos.setOnAction(event -> imprimirReporteProductos());
+
         // Listeners para actualización automática
         FechaInicialVen.valueProperty().addListener((obs, oldVal, newVal) -> cargarDatosVentas());
         fechaFinalVen.valueProperty().addListener((obs, oldVal, newVal) -> cargarDatosVentas());
+        FechaInicioProductos.valueProperty().addListener((obs, oldVal, newVal) -> cargarDatosProductos());
+        FechaFinProductos.valueProperty().addListener((obs, oldVal, newVal) -> cargarDatosProductos());
 
         cargarDatosVentas();
+        cargarDatosProductos();
     }
 
     private void configurarTablaEmpleados() {
@@ -80,6 +99,17 @@ public class Reportes {
         CantidadCol.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         DescripcionCol.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         TotalCol.setCellValueFactory(new PropertyValueFactory<>("total"));
+    }
+
+    private void configurarTablaProductos() {
+        IdProductoCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        CodigoProductoCol.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        NombreProductoCol.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        DescripcionProductoCol.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        PrecioComProductoCol.setCellValueFactory(new PropertyValueFactory<>("precioCompra"));
+        PrecioVenProductoCol.setCellValueFactory(new PropertyValueFactory<>("precioVenta"));
+        CantidadProductoCol.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+        CategoriaProductoCol.setCellValueFactory(new PropertyValueFactory<>("categoria"));
     }
 
     private Connection conectar() throws SQLException {
@@ -205,6 +235,57 @@ public class Reportes {
         }
     }
 
+    private void cargarDatosProductos() {
+        try {
+            listaProductos.clear();
+            LocalDate fechaInicio = FechaInicioProductos.getValue();
+            LocalDate fechaFin = FechaFinProductos.getValue();
+
+            if (fechaInicio == null || fechaFin == null) {
+                mostrarAlerta("Seleccione ambas fechas para filtrar.");
+                return;
+            }
+
+            if (fechaInicio.isAfter(fechaFin)) {
+                mostrarAlerta("La fecha de inicio no puede ser posterior a la fecha fin.");
+                return;
+            }
+
+            // Consulta modificada - versión sin filtro por fecha
+            String sql = "SELECT p.id, p.codigo, p.nombre, p.descripcion, p.precioCompra, " +
+                    "p.precioVenta, p.cantidad, c.nombre as categoria " +
+                    "FROM producto p " +
+                    "LEFT JOIN categoria c ON p.categoria = c.id " +
+                    "ORDER BY p.nombre"; // Ordenamos por nombre como alternativa
+
+            try (Connection conn = conectar();
+                 PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    listaProductos.add(new ProductoObjeto(
+                            rs.getInt("id"),
+                            rs.getInt("codigo"),
+                            rs.getString("nombre"),
+                            rs.getString("descripcion"),
+                            rs.getDouble("precioCompra"),
+                            rs.getDouble("precioVenta"),
+                            rs.getInt("cantidad"),
+                            rs.getString("categoria"),
+                            "", // ubicación vacía ya que no la mostramos en el reporte
+                            true // estado activo por defecto
+                    ));
+                }
+            }
+
+            tablaProductos.setItems(listaProductos);
+        } catch (Exception e) {
+            mostrarAlerta("Error al cargar datos de productos: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     private void imprimirReporteEmpleados() {
         try {
@@ -289,6 +370,55 @@ public class Reportes {
             }
         } catch (IOException e) {
             mostrarAlerta("Error", "Error al generar reporte de ventas: " + e.getMessage(), Alert.AlertType.ERROR);
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void imprimirReporteProductos() {
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Guardar Reporte de Productos");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivos de Texto", "*.txt"));
+            fileChooser.setInitialFileName("Reporte_Productos_" + LocalDate.now() + ".txt");
+            File file = fileChooser.showSaveDialog(tablaProductos.getScene().getWindow());
+
+            if (file != null) {
+                StringBuilder contenido = new StringBuilder();
+                contenido.append("REPORTE DE PRODUCTOS\n");
+                contenido.append("===================\n\n");
+                contenido.append("Período: ").append(FechaInicioProductos.getValue()).append(" al ").append(FechaFinProductos.getValue()).append("\n\n");
+
+                if (!descripcionesproductos.getText().isEmpty()) {
+                    contenido.append("Observaciones: ").append(descripcionesproductos.getText()).append("\n\n");
+                }
+
+                contenido.append(String.format("%-8s %-10s %-30s %-50s %-12s %-12s %-8s %-20s%n",
+                        "ID", "Código", "Nombre", "Descripción", "P. Compra", "P. Venta", "Cantidad", "Categoría"));
+                contenido.append(String.format("%-8s %-10s %-30s %-50s %-12s %-12s %-8s %-20s%n",
+                        "--------", "----------", "------------------------------", "--------------------------------------------------",
+                        "------------", "------------", "--------", "--------------------"));
+
+                for (ProductoObjeto producto : listaProductos) {
+                    contenido.append(String.format("%-8d %-10d %-30s %-50s $%-11.2f $%-11.2f %-8d %-20s%n",
+                            producto.getId(),
+                            producto.getCodigo(),
+                            producto.getNombre(),
+                            producto.getDescripcion(),
+                            producto.getPrecioCompra(),
+                            producto.getPrecioVenta(),
+                            producto.getCantidad(),
+                            producto.getCategoria()));
+                }
+
+                int totalProductos = listaProductos.stream().mapToInt(ProductoObjeto::getCantidad).sum();
+                contenido.append("\nTOTAL DE PRODUCTOS: ").append(totalProductos);
+
+                Files.write(file.toPath(), contenido.toString().getBytes(StandardCharsets.UTF_8));
+                mostrarAlerta("Éxito", "Reporte de productos generado exitosamente en: " + file.getAbsolutePath(), Alert.AlertType.INFORMATION);
+            }
+        } catch (IOException e) {
+            mostrarAlerta("Error", "Error al generar reporte de productos: " + e.getMessage(), Alert.AlertType.ERROR);
             e.printStackTrace();
         }
     }

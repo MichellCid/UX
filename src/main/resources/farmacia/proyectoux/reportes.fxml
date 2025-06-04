@@ -52,14 +52,25 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #f9f9f9;">
                      <children>
-                        <TextArea layoutX="152.0" layoutY="264.0" prefHeight="46.0" prefWidth="200.0" />
-                        <Label layoutX="12.0" layoutY="278.0" text="Label" />
-                        <Label layoutX="53.0" layoutY="14.0" text="Label" />
-                        <Label layoutX="163.0" layoutY="14.0" text="Label" />
-                        <Label layoutX="283.0" layoutY="14.0" text="Tipo de reporte:" />
-                        <Label layoutX="12.0" layoutY="64.0" text="Label" />
-                        <Button layoutX="642.0" layoutY="282.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Button" textFill="#f9f9f9" />
-                        <ComboBox layoutX="387.0" layoutY="14.0" prefWidth="150.0" />
+                        <TextArea fx:id="descripcionesproductos" layoutX="103.0" layoutY="264.0" prefHeight="46.0" prefWidth="588.0" />
+                        <Label layoutX="12.0" layoutY="278.0" text="Observaciones:" />
+                        <Label layoutX="53.0" layoutY="14.0" text="Fecha de Inicio:" />
+                        <Label layoutX="283.0" layoutY="14.0" text="Fecha de Fin:" />
+                        <Button fx:id="ImprimirProductos" layoutX="599.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Imprimir" textFill="#f9f9f9" />
+                        <DatePicker fx:id="FechaInicioProductos" layoutX="135.0" layoutY="10.0" prefHeight="25.0" prefWidth="121.0" />
+                        <DatePicker fx:id="FechaFinProductos" layoutX="359.0" layoutY="10.0" prefHeight="25.0" prefWidth="123.0" />
+                        <TableView fx:id="tablaProductos" layoutX="23.0" layoutY="52.0" prefHeight="200.0" prefWidth="663.0">
+                          <columns>
+                            <TableColumn fx:id="IdProductoCol" prefWidth="75.0" text="ID" />
+                            <TableColumn fx:id="CodigoProductoCol" prefWidth="75.0" text="Codigo" />
+                              <TableColumn fx:id="NombreProductoCol" prefWidth="75.0" text="Nombre" />
+                              <TableColumn fx:id="DescripcionProductoCol" prefWidth="120.00001525878906" text="Descripción" />
+                              <TableColumn fx:id="PrecioComProductoCol" prefWidth="90.0" text="Precio Compra" />
+                              <TableColumn fx:id="PrecioVenProductoCol" prefWidth="90.0" text="Precio Venta" />
+                              <TableColumn fx:id="CantidadProductoCol" prefWidth="67.33331298828125" text="Cantidad" />
+                              <TableColumn fx:id="CategoriaProductoCol" prefWidth="67.33331298828125" text="Categoria" />
+                          </columns>
+                        </TableView>
                      </children></AnchorPane>
             </content>
           </Tab>
