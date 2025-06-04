@@ -31,7 +31,7 @@
                   <TableColumn fx:id="colTotal" prefWidth="91.99996948242188" text="Total" />
               </columns>
             </TableView>
-            <Button fx:id="btnMostrarDetalles" layoutX="562.0" layoutY="304.0" mnemonicParsing="false" style="-fx-background-color: #138d75;" text="Mostrar detalles" textFill="#f9f9f9" />
+            <Button fx:id="btnMostrarDetalles" layoutX="562.0" layoutY="304.0" mnemonicParsing="false" onAction="#mostrarDetallesVenta" style="-fx-background-color: #138d75;" text="Mostrar detalles" textFill="#f9f9f9" />
             <DatePicker fx:id="dateDesde" layoutX="63.0" layoutY="44.0" />
             <DatePicker fx:id="dateHasta" layoutX="335.0" layoutY="44.0" />
             <Label layoutX="210.0" layoutY="14.0" text="Mostrar venta por fechas" />
@@ -39,7 +39,7 @@
             <Label layoutX="290.0" layoutY="48.0" text="Hasta" />
             <Label layoutX="28.0" layoutY="117.0" prefHeight="17.0" prefWidth="90.0" text="Buscar por id:" />
             <TextField fx:id="campoBusqueda" layoutX="125.0" layoutY="113.0" prefHeight="25.0" prefWidth="75.0" />
-            <Button fx:id="btnCancelarVenta" layoutX="562.0" layoutY="264.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #138d75;" text="Cancelar venta" textFill="#f9f9f9" />
+            <Button fx:id="btnCancelarVenta" layoutX="562.0" layoutY="264.0" mnemonicParsing="false" onAction="#cancelarVentaSeleccionada" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #138d75;" text="Cancelar venta" textFill="#f9f9f9" />
          </children>
       </AnchorPane>
    </children>
