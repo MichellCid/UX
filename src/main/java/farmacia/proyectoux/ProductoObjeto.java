@@ -36,6 +36,19 @@ public class ProductoObjeto {
 
 
     }
+    public ProductoObjeto(int id, int codigo, String nombre, String descripcion, double precioVenta, int cantidad, String categoria, String ubicacion){
+        this.id = id;
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.PrecioVenta = precioVenta;
+        this.cantidad = cantidad;
+        this.categoria = categoria;
+        this.ubicacion = ubicacion;
+
+
+    }
+
 
     public int getId() {
         return id;
