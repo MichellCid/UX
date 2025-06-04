@@ -47,7 +47,7 @@ public class InicioEmpleado {
     private void initialize() {
         ventasEmpleado.setOnAction(e -> cargarPantallaVentas());
         productosEmpleados.setOnAction(e -> cargarPantalla("/farmacia/proyectoux/productosEmpleado.fxml"));
-        facturasEmpleados.setOnAction(e -> cargarPantalla("/farmacia/proyectoux/facturasEmpleado.fxml"));
+        facturasEmpleados.setOnAction(e -> cargarPantallaFacturas());
         corteEmpleado.setOnAction(e -> cargarPantalla("/farmacia/proyectoux/corteDeCaja.fxml"));
 
         finSesion.setOnAction(e -> cerrarSesion());
@@ -61,6 +61,21 @@ public class InicioEmpleado {
             // Obtener el controlador y pasar el ID del empleado
             Ventas controlador = loader.getController();
             controlador.setIdEmpleadoActual(idEmpleadoActual); // Este debe estar definido como variable en esta clase
+
+            mostrarPantallas.getChildren().setAll(pane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void cargarPantallaFacturas() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/farmacia/proyectoux/facturasEmpleado.fxml"));
+            Parent pane = loader.load();
+
+            // Obtener el controlador y pasar el ID del empleado
+            FacturasEmpleado controlador = loader.getController();
+            controlador.setIdEmpleadoYcargarVentas(idEmpleadoActual); // Este debe estar definido como variable en esta clase
 
             mostrarPantallas.getChildren().setAll(pane);
         } catch (IOException e) {

@@ -32,8 +32,8 @@
                   <TableColumn fx:id="totalF" prefWidth="59.333282470703125" text="Total" />
               </columns>
             </TableView>
-            <Button fx:id="verF" layoutX="544.0" layoutY="268.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #138d75;" text="Visualizar" textFill="#f9f9f9" />
-            <Button fx:id="imprimirF" layoutX="544.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #138d75;" text="Imprimir" textFill="#f9f9f9" />
+            <Button fx:id="verF" layoutX="544.0" layoutY="268.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #138d75;" text="Visualizar" textFill="#f9f9f9" onAction="#visualizarDetalle"/>
+            <Button fx:id="imprimirF" layoutX="544.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #138d75;" text="Imprimir" textFill="#f9f9f9" onAction="#imprimirTicket" />
             <Label layoutX="18.0" layoutY="64.0" text="Buscar" />
             <Label layoutX="17.0" layoutY="27.0" text="Desde:" />
             <Label layoutX="213.0" layoutY="27.0" text="Hasta:" />
