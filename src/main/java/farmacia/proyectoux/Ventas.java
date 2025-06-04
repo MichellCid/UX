@@ -2,6 +2,7 @@ package farmacia.proyectoux;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -270,6 +271,19 @@ public class Ventas {
         busquedaPV.setVisible(false);
         busquedaAgregarVenta.clear();
         listaBusqueda.clear();
+    }
+
+    @FXML
+    void handleEliminarProducto(ActionEvent event) {
+        ProductoVenta seleccionado = tablaProductosVenta.getSelectionModel().getSelectedItem();
+
+        if (seleccionado == null) {
+            mostrarAlerta("Por favor selecciona un producto para eliminar.");
+            return;
+        }
+
+        tablaProductosVenta.getItems().remove(seleccionado);
+        actualizarTotal(); // Vuelve a calcular el total de la venta
     }
 
 }
