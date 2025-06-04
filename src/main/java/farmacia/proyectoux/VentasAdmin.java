@@ -148,12 +148,15 @@ public class VentasAdmin {
                              "v.fecha, v.total " +
                              "FROM ventas v " +
                              "JOIN empleados e ON v.id_empleado = e.id " +
-                             "WHERE v.id LIKE ? OR e.nombre LIKE ? OR e.apellidos LIKE ? " +
+                             "WHERE v.id LIKE ? " +
+                             "OR e.nombre LIKE ? " +
+                             "OR v.total LIKE ? " +
                              "ORDER BY v.fecha DESC")) {
 
-            stmt.setString(1, "%" + criterio + "%");
-            stmt.setString(2, "%" + criterio + "%");
-            stmt.setString(3, "%" + criterio + "%");
+            String searchPattern = "%" + criterio + "%";
+            stmt.setString(1, searchPattern);  // ID de venta
+            stmt.setString(2, searchPattern);  // Nombre empleado
+            stmt.setString(3, searchPattern);  // Total
 
             ResultSet rs = stmt.executeQuery();
             listaVentas.clear();
@@ -177,6 +180,7 @@ public class VentasAdmin {
             mostrarAlerta("Error al buscar ventas: " + e.getMessage());
         }
     }
+
 
     @FXML
     private void mostrarDetallesVenta() {
