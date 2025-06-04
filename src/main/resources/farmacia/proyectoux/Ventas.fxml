@@ -44,7 +44,7 @@
             </Button>
             <Label layoutX="454.0" layoutY="276.0" text="Total:" />
             <Label layoutX="454.0" layoutY="240.0" text="Cambio:" />
-            <Button fx:id="EliminarPV" layoutX="297.0" layoutY="110.0" mnemonicParsing="false" style="-fx-background-color: fd786f;" text="Eliminar producto" />
+            <Button fx:id="EliminarPV" layoutX="297.0" layoutY="110.0" mnemonicParsing="false" style="-fx-background-color: fd786f;" text="Eliminar producto" onAction="#handleEliminarProducto"/>
             <Label layoutX="455.0" layoutY="206.0" text="Importe:" />
             <TextField fx:id="ImporteCliente" layoutX="516.0" layoutY="202.0" />
             <Label fx:id="cambioV" layoutX="516.0" layoutY="241.0" text="Label" />

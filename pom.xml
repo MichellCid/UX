@@ -12,6 +12,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.10.2</junit.version>
+        <itext.version>5.5.13.3</itext.version>
     </properties>
 
     <dependencies>
@@ -24,6 +25,13 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>17.0.6</version>
+        </dependency>
+
+        <!-- Dependencia para MySQL -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
         </dependency>
 
         <dependency>
@@ -60,7 +68,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>farmacia.proyectoux/farmacia.proyectoux.HelloApplication</mainClass>
+                            <mainClass>farmacia.proyectoux.HelloApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
