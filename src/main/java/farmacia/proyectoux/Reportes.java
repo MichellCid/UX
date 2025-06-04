@@ -5,9 +5,18 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
+
+import javafx.stage.FileChooser;
 
 public class Reportes {
 
@@ -18,6 +27,7 @@ public class Reportes {
     @FXML private TableColumn<EmpleadoReporte, Double> TotalVen;
     @FXML private DatePicker FechaInicio, FechaFin;
     @FXML private Button actualizarButton;
+    @FXML private Button btnImprimir;
 
     private ObservableList<EmpleadoReporte> listaEmpleados = FXCollections.observableArrayList();
 
@@ -40,6 +50,7 @@ public class Reportes {
 
             // Configurar el botón de actualización
             actualizarButton.setOnAction(event -> cargarDatosEmpleados());
+            btnImprimir.setOnAction(event -> imprimirReporte());
 
             // Cargar datos iniciales
             cargarDatosEmpleados();
@@ -163,5 +174,60 @@ public class Reportes {
         public String getHoraIngreso() { return horaIngreso; }
         public String getHoraCierre() { return horaCierre; }
         public double getTotalVendido() { return totalVendido; }
+    }
+    @FXML
+    private void imprimirReporte() {
+        try {
+            // Crear diálogo para guardar archivo
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Guardar Reporte TXT");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivos de Texto", "*.txt"));
+            fileChooser.setInitialFileName("Reporte_Empleados_" + LocalDate.now() + ".txt");
+            File file = fileChooser.showSaveDialog(tablaEmpleados.getScene().getWindow());
+
+            if (file != null) {
+                // Crear el contenido del reporte
+                StringBuilder contenido = new StringBuilder();
+
+                // Encabezado del reporte
+                contenido.append("REPORTE DE EMPLEADOS\n");
+                contenido.append("=====================\n\n");
+                contenido.append("Período: ").append(FechaInicio.getValue()).append(" al ").append(FechaFin.getValue()).append("\n\n");
+
+                // Encabezados de las columnas
+                contenido.append(String.format("%-5s %-20s %-20s %-15s %-12s %-10s %-10s %-15s%n",
+                        "ID", "Nombre", "Apellidos", "Puesto", "F. Ingreso", "H. Ingreso", "H. Cierre", "Total Vendido"));
+                contenido.append(String.format("%-5s %-20s %-20s %-15s %-12s %-10s %-10s %-15s%n",
+                        "----", "--------------------", "--------------------", "---------------", "------------", "----------", "----------", "---------------"));
+
+                // Datos de los empleados
+                for (EmpleadoReporte empleado : listaEmpleados) {
+                    contenido.append(String.format("%-5d %-20s %-20s %-15s %-12s %-10s %-10s $%-14.2f%n",
+                            empleado.getId(),
+                            empleado.getNombre(),
+                            empleado.getApellidos(),
+                            empleado.getRol(),
+                            empleado.getFechaIngreso(),
+                            empleado.getHoraIngreso(),
+                            empleado.getHoraCierre(),
+                            empleado.getTotalVendido()));
+                }
+
+                // Escribir el contenido al archivo
+                Files.write(file.toPath(), contenido.toString().getBytes(StandardCharsets.UTF_8));
+
+                mostrarAlerta("Éxito", "Reporte generado exitosamente en: " + file.getAbsolutePath(), Alert.AlertType.INFORMATION);
+            }
+        } catch (IOException e) {
+            mostrarAlerta("Error", "Error al generar TXT: " + e.getMessage(), Alert.AlertType.ERROR);
+            e.printStackTrace();
+        }
+    }
+    private void mostrarAlerta(String titulo, String mensaje, Alert.AlertType tipo) {
+        Alert alert = new Alert(tipo);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
     }
 }

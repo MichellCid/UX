@@ -100,6 +100,7 @@
                         <Text layoutX="108.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Inicio:" wrappingWidth="83.8424072265625" />
                         <DatePicker fx:id="FechaFin" layoutX="397.0" layoutY="16.0" prefHeight="25.0" prefWidth="124.0" />
                         <Text layoutX="333.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Fin:" wrappingWidth="83.8424072265625" />
+                        <Button fx:id="btnImprimir" layoutX="565.0" layoutY="16.0" mnemonicParsing="false" onAction="#imprimirReporte" prefHeight="25.0" prefWidth="81.0" text="Imprimir" />
                      </children></AnchorPane>
               </content>
             </Tab>
